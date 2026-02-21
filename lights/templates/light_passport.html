@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReVive LED Passport</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .passport { border: 2px solid #007bff; padding: 20px; border-radius: 10px; background: #f8f9fa; }
+        .id { font-size: 24px; font-weight: bold; color: #007bff; }
+        .status { color: #28a745; font-weight: bold; }
+        .created { font-style: italic; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <h1>🔆 ReVive LED Light Passport</h1>
+    
+    <div class="passport">
+        <h2>Light ID: <span class="id">{{ passport.light_id }}</span></h2>
+        <p class="status">✅ Operational & Recyclable</p>
+        <p class="created">First scanned: {% if created %}Just now (new record){% else %}Previously{% endif %}</p>
+        
+        <h3>Passport Details:</h3>
+        <ul>
+            <li>Status: Active</li>
+            <li>Material: 95% Recycled Solar Panel</li>
+            <li>ReVive Certified: Yes</li>
+            <li>Scan Count: {{ passport.id }}</li>  <!-- Demo counter -->
+        </ul>
+    </div>
+
+    <p><small>ReVive: Giving solar panels a second life as LEDs.</small></p>
+</body>
+</html>

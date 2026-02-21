@@ -6,8 +6,8 @@ from io import BytesIO
 
 
 def light_passport(request, light_id):
-    # Get or create a LightPassport row for this ID
-    passport, created = LightPassport.objects.get_or_create(light_id=light_id)
+    passport = type('FakePassport', (), {'light_id': light_id, 'qr_data': f'QR for {light_id}'})
+    created = True
 
     context = {
         "passport": passport,
@@ -22,7 +22,7 @@ def generate_qr(request, light_id):
     qr.add_data(qr_url)
     qr.make(fit=True)
     img = qr.make_image(fill='black', back_color='white')
-    
+
     response = HttpResponse(content_type='image/png')
     img.save(response, 'PNG')
     return response
